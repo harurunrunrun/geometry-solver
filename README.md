@@ -246,9 +246,9 @@ using RawPolynomial = QuadPoly<2 * MAX_P>;
 | `ConstraintId add_collinear(PointId a, PointId b, PointId c);` | `A, B, C` を同一直線上に置く。 |
 | `ConstraintId add_parallel(PointId a, PointId b, PointId c, PointId d);` | 直線 `AB` と `CD` を平行にする。 |
 | `ConstraintId add_perpendicular(PointId a, PointId b, PointId c, PointId d);` | ベクトル `AB` と `CD` を垂直にする。 |
-| `ConstraintId add_distance2(PointId a, PointId b, const Rational& d2);` | `|AB|^2 = d2` を追加する。 |
+| `ConstraintId add_distance2(PointId a, PointId b, const Rational& d2);` | `\|AB\|^2 = d2` を追加する。 |
 | `ConstraintId add_distance2(PointId a, PointId b, long long d2);` | 同上。整数版。 |
-| `ConstraintId add_same_distance(PointId a, PointId b, PointId c, PointId d);` | `|AB| = |CD|` を追加する。内部では二乗距離を比較する。 |
+| `ConstraintId add_same_distance(PointId a, PointId b, PointId c, PointId d);` | `\|AB\| = \|CD\|` を追加する。内部では二乗距離を比較する。 |
 | `ConstraintId add_on_line(PointId p, PointId a, PointId b);` | `P` を直線 `AB` 上に置く。 |
 | `ConstraintId add_acute_angle(PointId a, PointId vertex, PointId c);` | 角 `A-vertex-C` を鋭角にする。 |
 | `ConstraintId add_obtuse_angle(PointId a, PointId vertex, PointId c);` | 角 `A-vertex-C` を鈍角にする。 |
@@ -323,11 +323,11 @@ using RawPolynomial = QuadPoly<2 * MAX_P>;
 | `RawAffine raw_y(PointId p) const;` | 点 `P` のy座標をアフィン式として返す。 |
 | `static RawPolynomial raw_linear(const RawAffine& expression);` | アフィン式を二次多項式型へ変換する。 |
 | `static RawPolynomial raw_product(const RawAffine& a, const RawAffine& b);` | 二つのアフィン式の積を返す。 |
-| `RawPolynomial raw_dist2(PointId a, PointId b) const;` | `|AB|^2` の多項式を返す。 |
+| `RawPolynomial raw_dist2(PointId a, PointId b) const;` | `\|AB\|^2` の多項式を返す。 |
 | `RawPolynomial raw_dot(PointId a, PointId b, PointId c, PointId d) const;` | `AB・CD` の多項式を返す。 |
 | `RawPolynomial raw_cross(PointId a, PointId b, PointId c, PointId d) const;` | `cross(AB, CD)` の多項式を返す。 |
 | `RawPolynomial raw_polygon_area2(const std::vector<PointId>& polygon) const;` | 多角形の符号付き二倍面積を返す。反時計回りが正。 |
-| `RawPolynomial raw_circle_power(PointId p, PointId center, const Rational& radius_squared) const;` | `|P-center|^2 - radius_squared` を返す。 |
+| `RawPolynomial raw_circle_power(PointId p, PointId center, const Rational& radius_squared) const;` | `\|P-center\|^2 - radius_squared` を返す。 |
 | `ConstraintId add_polynomial_equal_zero(const RawPolynomial& polynomial);` | `polynomial == 0` を追加する。 |
 | `ConstraintId add_polynomial_greater_equal_zero(const RawPolynomial& polynomial);` | `polynomial >= 0` を追加する。 |
 | `ConstraintId add_polynomial_greater_zero(const RawPolynomial& polynomial);` | `polynomial > 0` を追加する。 |
@@ -341,7 +341,7 @@ using RawPolynomial = QuadPoly<2 * MAX_P>;
 |---|---|
 | `ValueExpr x_expr(PointId p) const;` | `P.x` を問い合わせる式を作る。絶対座標系が必要。 |
 | `ValueExpr y_expr(PointId p) const;` | `P.y` を問い合わせる式を作る。絶対座標系が必要。 |
-| `ValueExpr dist2_expr(PointId a, PointId b) const;` | `|AB|^2` を問い合わせる式を作る。 |
+| `ValueExpr dist2_expr(PointId a, PointId b) const;` | `\|AB\|^2` を問い合わせる式を作る。 |
 | `ValueExpr dot_expr(PointId a, PointId b, PointId c, PointId d) const;` | `AB・CD` を問い合わせる式を作る。 |
 | `ValueExpr cross_expr(PointId a, PointId b, PointId c, PointId d) const;` | `cross(AB, CD)` を問い合わせる式を作る。 |
 | `ValueExpr area2_expr(PointId a, PointId b, PointId c) const;` | 三角形 `ABC` の符号付き二倍面積を問い合わせる式を作る。 |
